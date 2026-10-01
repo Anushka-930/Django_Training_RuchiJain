@@ -1,0 +1,38 @@
+<h1>Online Testing System</h1>
+
+<a href="/home/">Home</a>
+<a href="/logout/">Logout</a>
+
+<h2>Your Report Card</h2>
+
+<p>
+Hi {{ username }}, you have attempted
+{{ total_tests }} tests and you have scored
+{{ total_points }}
+</p>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Attempt</th>
+        <th>Right</th>
+        <th>Wrong</th>
+        <th>Points</th>
+    </tr>
+
+    {% for result in results %}
+    <tr>
+        <td>{{ result.created_at|date:"Y-m-d" }}</td>
+        <td>{{ result.created_at|time:"H:i" }}</td>
+        <td>{{ result.attempt }}</td>
+        <td>{{ result.right }}</td>
+        <td>{{ result.wrong }}</td>
+        <td>{{ result.points }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="6">No tests attempted yet.</td>
+    </tr>
+    {% endfor %}
+</table>

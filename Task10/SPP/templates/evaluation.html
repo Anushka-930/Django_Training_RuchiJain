@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skill Evaluation</title>
+</head>
+<body>
+
+<h2>Student Skill Evaluation</h2>
+
+{% if error %}
+<p>{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <input type="number" name="cgpa" step="0.01" placeholder="CGPA">
+    <br><br>
+
+    <input
+        type="text"
+        name="programming_skills"
+        placeholder="Programming Skills">
+    <br><br>
+
+    <input
+        type="text"
+        name="technical_skills"
+        placeholder="Technical Skills">
+    <br><br>
+
+    <input
+        type="text"
+        name="communication_skills"
+        placeholder="Communication Skills">
+    <br><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+</body>
+</html>

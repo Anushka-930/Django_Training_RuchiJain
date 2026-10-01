@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Operations</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eef2ff; margin: 0; padding: 40px 16px; }
+        .box { max-width: 520px; margin: auto; background: white; padding: 28px; border-radius: 12px; box-shadow: 0 8px 24px #1e293b22; }
+        h1 { color: #1e293b; margin-top: 0; }
+        label { display: block; margin-top: 14px; color: #475569; }
+        input { box-sizing: border-box; width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px; }
+        .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        button { padding: 12px; border: 0; border-radius: 6px; background: #2563eb; color: white; font-size: 15px; cursor: pointer; }
+        button:hover { background: #1d4ed8; }
+        .result { margin-top: 22px; padding: 14px; border-radius: 6px; background: #dcfce7; color: #166534; font-size: 18px; }
+        .error { margin-top: 22px; padding: 14px; border-radius: 6px; background: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body>
+    <main class="box">
+        <h1>Math Operations</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="first_number">Pehla number</label>
+            <input id="first_number" name="first_number" type="number" step="any" required>
+
+            <label for="second_number">Doosra number</label>
+            <input id="second_number" name="second_number" type="number" step="any" required>
+
+            <div class="buttons">
+                <button name="operation" value="add" type="submit">Jod (+)</button>
+                <button name="operation" value="subtract" type="submit">Ghata (-)</button>
+                <button name="operation" value="multiply" type="submit">Guna (x)</button>
+                <button name="operation" value="divide" type="submit">Bhaag (/)</button>
+            </div>
+        </form>
+
+        {% if result is not None %}
+            <div class="result">Result: {{ result }}</div>
+        {% endif %}
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </main>
+</body>
+</html>

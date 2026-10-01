@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'my.css' %}">
+</head>
+<body>
+    <h1 style="color: rgb(15, 15, 203); font-family: Arial, sans-serif; font-size: 16px;">
+        Sagar group of institutions is a group of educational institutions in India. It was established in 1998 by Dr. Sagar, a renowned educationist and philanthropist. The group has a vision to provide quality education to students from all backgrounds and to prepare them for successful careers in their chosen fields.
+    </h1>
+    <div>
+        <img src="{% static 'sistec.jpg.jpeg' %}" alt="Sagar Group of Institutions" width="500" height="300">
+    </div>
+
+    {% block content %}
+    {% endblock %}
+    <div>
+        <h1>Anushka Mewada</h1>
+    </div>
+</body>
+</html>

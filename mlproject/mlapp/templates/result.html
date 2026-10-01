@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Prediction Result</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            color: #172033;
+            background: linear-gradient(135deg, #e8f3ff, #f8fbff);
+        }
+
+        .result-card {
+            width: min(680px, 100%);
+            padding: 36px;
+            border: 1px solid #d7e5f5;
+            border-radius: 14px;
+            background: #ffffff;
+            box-shadow: 0 18px 45px rgba(38, 76, 115, 0.14);
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            color: #143f67;
+            font-size: 28px;
+        }
+
+        h2 {
+            margin: 26px 0 8px;
+            color: #53657a;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .input-values {
+            overflow-wrap: anywhere;
+            padding: 14px;
+            border-radius: 8px;
+            color: #52657b;
+            background: #f3f7fb;
+        }
+
+        .prediction {
+            display: inline-block;
+            margin: 8px 0 20px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            color: #ffffff;
+            background: #16745b;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .classes {
+            margin: 0;
+            padding-left: 20px;
+            color: #52657b;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 480px) {
+            .result-card {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="result-card">
+        <h1>Glass Prediction Result</h1>
+
+        <h2>Values entered</h2>
+        <div class="input-values">{{ lis }}</div>
+
+        <h2>Predicted glass type</h2>
+        <div class="prediction">
+            {% if ans == 1 %}
+                Class 1: Building windows float processed
+            {% elif ans == 2 %}
+                Class 2: Building windows non-float processed
+            {% elif ans == 3 %}
+                Class 3: Vehicle windows float processed
+            {% elif ans == 4 %}
+                Class 4: Vehicle windows non-float processed
+            {% elif ans == 5 %}
+                Class 5: Containers
+            {% elif ans == 6 %}
+                Class 6: Tableware
+            {% elif ans == 7 %}
+                Class 7: Headlamps
+            {% else %}
+                Unknown glass class ({{ ans }})
+            {% endif %}
+        </div>
+
+        <h2>Glass classes</h2>
+        <ul class="classes">
+            <li>1: Building windows float processed</li>
+            <li>2: Building windows non-float processed</li>
+            <li>3: Vehicle windows float processed</li>
+            <li>4: Vehicle windows non-float processed</li>
+            <li>5: Containers</li>
+            <li>6: Tableware</li>
+            <li>7: Headlamps</li>
+        </ul>
+    </main>
+</body>
+</html>

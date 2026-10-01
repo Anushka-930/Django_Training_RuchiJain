@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Student Registration Portal{% endblock %}
+{% block content %}
+<main>
+    <section class="home-layout">
+        <div>
+            <p class="eyebrow">Your next chapter starts here</p>
+            {% if student_name %}
+                <h1>Welcome,<br>{{ student_name }}.</h1>
+                <p class="home-copy">Your student portal is ready. You are signed in and can manage your registration access here.</p>
+                <a class="button" href="{% url 'logout' %}">Log out</a>
+            {% else %}
+                <h1>Make your<br>next move count.</h1>
+                <p class="home-copy">Create your student account and get started with the Student Registration Portal.</p>
+                <div class="home-actions">
+                    <a class="button" href="{% url 'signup' %}">Start registration</a>
+                    <a class="button button-secondary" href="{% url 'login' %}">Student log in</a>
+                </div>
+            {% endif %}
+        </div>
+        <aside class="panel home-panel">
+            <p class="eyebrow">Student access</p>
+            <h2>One account.<br>A fresh start.</h2>
+            <p>Register securely and return whenever you need to sign in.</p>
+        </aside>
+    </section>
+</main>
+{% endblock %}

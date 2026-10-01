@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Register | Student Registration Portal{% endblock %}
+{% block content %}
+<main class="form-page">
+    <section class="panel form-panel" aria-labelledby="register-heading">
+        <p class="eyebrow">New student</p>
+        <h1 id="register-heading">Create your account</h1>
+        <p class="form-intro">Register to access the Student Registration Portal.</p>
+        {% if errormsg %}<p class="error" role="alert">{{ errormsg }}</p>{% endif %}
+        <form action="{% url 'saveuser' %}" method="post">
+            {% csrf_token %}
+            <div class="field"><label for="name">Full name</label><input type="text" name="name" id="name" maxlength="20" autocomplete="name" required></div>
+            <div class="field"><label for="username">Username</label><input type="text" name="username" id="username" maxlength="20" autocomplete="username" required></div>
+            <div class="field"><label for="password">Password</label><input type="password" name="password" id="password" minlength="8" autocomplete="new-password" required></div>
+            <button class="button" type="submit">Create account</button>
+        </form>
+        <p class="form-foot">Already registered? <a href="{% url 'login' %}">Log in</a></p>
+    </section>
+</main>
+{% endblock %}

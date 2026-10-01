@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Log in | Student Registration Portal{% endblock %}
+{% block content %}
+<main class="form-page">
+    <section class="panel form-panel" aria-labelledby="login-heading">
+        <p class="eyebrow">Student access</p>
+        <h1 id="login-heading">Welcome back</h1>
+        <p class="form-intro">Log in to your Student Registration Portal account.</p>
+        {% if erg %}<p class="error" role="alert">{{ erg }}</p>{% endif %}
+        <form action="{% url 'loginvalidation' %}" method="post">
+            {% csrf_token %}
+            <div class="field"><label for="username">Username</label><input type="text" name="username" id="username" autocomplete="username" required></div>
+            <div class="field"><label for="password">Password</label><input type="password" name="password" id="password" autocomplete="current-password" required></div>
+            <button class="button" type="submit">Log in</button>
+        </form>
+        <p class="form-foot">New here? <a href="{% url 'signup' %}">Create an account</a></p>
+    </section>
+</main>
+{% endblock %}
